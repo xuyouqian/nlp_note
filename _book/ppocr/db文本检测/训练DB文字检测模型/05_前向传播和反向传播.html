@@ -1,0 +1,580 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>前向传播和反向传播 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="06db模型后处理.html" />
+    
+    
+    <link rel="prev" href="04模型构建.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../pdpd/readme.html">
+            
+                <a href="../../../pdpd/readme.html">
+            
+                    
+                    paddlepaddle
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../../pdpd/数据集.html">
+            
+                <a href="../../../pdpd/数据集.html">
+            
+                    
+                    数据预处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../../pdpd/手写数字识别代码.html">
+            
+                <a href="../../../pdpd/手写数字识别代码.html">
+            
+                    
+                    实现手写数字识别代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../../pdpd/卷积神经网络.html">
+            
+                <a href="../../../pdpd/卷积神经网络.html">
+            
+                    
+                    卷积神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    图像分类
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../readme.html">
+            
+                <a href="../../readme.html">
+            
+                    
+                    ppocr
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../readme.html">
+            
+                <a href="../readme.html">
+            
+                    
+                    文本检测
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../文本检测算法的详细实现/readme.html">
+            
+                <a href="../文本检测算法的详细实现/readme.html">
+            
+                    
+                    文本检测算法的详细实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1" data-path="../文本检测算法的详细实现/01DB文本检测算法原理.html">
+            
+                <a href="../文本检测算法的详细实现/01DB文本检测算法原理.html">
+            
+                    
+                    DB文本检测算法原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2" data-path="../文本检测算法的详细实现/02DB文本检测模型构建.html">
+            
+                <a href="../文本检测算法的详细实现/02DB文本检测模型构建.html">
+            
+                    
+                    DB文本检测算法模型构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    训练DB文本检测模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.1" data-path="01图片标签生成.html">
+            
+                <a href="01图片标签生成.html">
+            
+                    
+                    生成图片标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2" data-path="02_损失函数.html">
+            
+                <a href="02_损失函数.html">
+            
+                    
+                    损失函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.3" data-path="03_完整的训练集生成.html">
+            
+                <a href="03_完整的训练集生成.html">
+            
+                    
+                    完整训练集生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.4" data-path="04模型构建.html">
+            
+                <a href="04模型构建.html">
+            
+                    
+                    模型构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.1.2.5" data-path="05_前向传播和反向传播.html">
+            
+                <a href="05_前向传播和反向传播.html">
+            
+                    
+                    前向传播和反向传播
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.6" data-path="06db模型后处理.html">
+            
+                <a href="06db模型后处理.html">
+            
+                    
+                    DB模型后处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.7" data-path="07模型评估.html">
+            
+                <a href="07模型评估.html">
+            
+                    
+                    模型评估
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >前向传播和反向传播</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x524D;&#x5411;&#x4F20;&#x64AD;&#x548C;&#x53CD;&#x5411;&#x4F20;&#x64AD;">&#x524D;&#x5411;&#x4F20;&#x64AD;&#x548C;&#x53CD;&#x5411;&#x4F20;&#x64AD;</h1>
+<p>&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5047;&#x6570;&#x636E;&#x505A;&#x6F14;&#x793A;&#x4E86;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> ppocr.modeling.backbones.det_mobilenet_v3 <span class="hljs-keyword">import</span> MobileNetV3
+<span class="hljs-keyword">from</span> ppocr.modeling.backbones.det_resnet_vd <span class="hljs-keyword">import</span> ResNet
+<span class="hljs-keyword">from</span> ppocr.modeling.backbones.det_resnet_vd_sast <span class="hljs-keyword">import</span> ResNet_SAST
+
+<span class="hljs-keyword">from</span> ppocr.modeling.necks.db_fpn <span class="hljs-keyword">import</span> DBFPN
+<span class="hljs-keyword">from</span> ppocr.modeling.necks.east_fpn <span class="hljs-keyword">import</span> EASTFPN
+<span class="hljs-keyword">from</span> ppocr.modeling.necks.sast_fpn <span class="hljs-keyword">import</span> SASTFPN
+<span class="hljs-keyword">from</span> ppocr.modeling.necks.rnn <span class="hljs-keyword">import</span> SequenceEncoder
+
+<span class="hljs-keyword">from</span> ppocr.optimizer <span class="hljs-keyword">import</span> regularizer, optimizer
+
+<span class="hljs-keyword">from</span> ppocr.modeling.heads.det_db_head <span class="hljs-keyword">import</span> DBHead
+
+<span class="hljs-keyword">import</span> paddle
+<span class="hljs-keyword">from</span> paddle <span class="hljs-keyword">import</span> nn
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseModel</span><span class="hljs-params">(nn.Layer)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        super(BaseModel, self).__init__()
+        self.backbone = MobileNetV3(in_channels=<span class="hljs-number">3</span>, model_name=<span class="hljs-string">&apos;large&apos;</span>)
+
+        in_channels = self.backbone.out_channels
+        self.dbfpn = DBFPN(in_channels=in_channels, out_channels=<span class="hljs-number">256</span>)
+
+        self.dbhead = DBHead(in_channels=<span class="hljs-number">256</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, inputs)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;
+
+        :param inouts: &#x8F93;&#x5165;&#x5F85;&#x68C0;&#x6D4B;&#x7684;&#x56FE;&#x7247;  &#x4E09;&#x901A;&#x9053; &#x50CF;&#x7D20;&#x70B9;&#x5FC5;&#x987B;&#x662F;32&#x7684;&#x500D;&#x6570;  [batch size, 3, 320,320]
+        :return:
+        &quot;&quot;&quot;</span>
+        outputs_01 = self.backbone(inputs)
+        outputs_02 = self.dbfpn(outputs_01)
+        outputs_03 = self.dbhead(outputs_02)
+
+        <span class="hljs-comment"># outputs_03&#x4E2D; maps&#x952E;&#x662F;&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;   &#x8DDF;&#x539F;&#x56FE;&#x5927;&#x5C0F;&#x4E00;&#x6837;</span>
+        <span class="hljs-keyword">return</span> outputs_03
+
+
+<span class="hljs-keyword">from</span> T13_lossfunction <span class="hljs-keyword">import</span> DBLoss
+
+<span class="hljs-keyword">from</span> paddle.regularizer <span class="hljs-keyword">import</span> L2Decay
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">build_optimizer</span><span class="hljs-params">(parameters)</span>:</span>
+    lr = <span class="hljs-number">0.001</span>
+    grad_clip = <span class="hljs-keyword">None</span>
+    optim = optimizer.Adam(learning_rate=lr, grad_clip=grad_clip, beta1=<span class="hljs-number">0.9</span>, beta2=<span class="hljs-number">0.999</span>, weight_decay=L2Decay(<span class="hljs-number">0.0001</span>))
+
+    <span class="hljs-keyword">return</span> optim(parameters), lr
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+
+    model = BaseModel()
+    optim, lr = build_optimizer(model.parameters())
+    fake_inputs = paddle.randn([<span class="hljs-number">8</span>, <span class="hljs-number">3</span>, <span class="hljs-number">320</span>, <span class="hljs-number">320</span>], dtype=<span class="hljs-string">&apos;float32&apos;</span>)
+    labels = [paddle.randn([<span class="hljs-number">8</span>, <span class="hljs-number">320</span>, <span class="hljs-number">320</span>])] * <span class="hljs-number">5</span>
+    model.train()
+    <span class="hljs-keyword">for</span> eopch <span class="hljs-keyword">in</span> range(<span class="hljs-number">50</span>):
+        <span class="hljs-keyword">for</span> step <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>):
+            outputs = model(fake_inputs)
+            loss_fun = DBLoss()
+            loss = loss_fun(outputs, labels)
+            avg_loss = loss[<span class="hljs-string">&apos;loss&apos;</span>]
+            print(avg_loss)
+            avg_loss.backward()
+            optim.step()
+
+            optim.clear_grad()
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="04模型构建.html" class="navigation navigation-prev " aria-label="Previous page: 模型构建">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="06db模型后处理.html" class="navigation navigation-next " aria-label="Next page: DB模型后处理">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"前向传播和反向传播","level":"1.3.1.2.5","depth":4,"next":{"title":"DB模型后处理","level":"1.3.1.2.6","depth":4,"path":"ppocr/db文本检测/训练DB文字检测模型/06db模型后处理.md","ref":"ppocr/db文本检测/训练DB文字检测模型/06db模型后处理.md","articles":[]},"previous":{"title":"模型构建","level":"1.3.1.2.4","depth":4,"path":"ppocr/db文本检测/训练DB文字检测模型/04模型构建.md","ref":"ppocr/db文本检测/训练DB文字检测模型/04模型构建.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ppocr/db文本检测/训练DB文字检测模型/05_前向传播和反向传播.md","mtime":"2022-02-21T07:48:40.379Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-26T06:28:45.468Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,591 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>数据预处理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="手写数字识别代码.html" />
+    
+    
+    <link rel="prev" href="readme.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    paddlepaddle
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="数据集.html">
+            
+                <a href="数据集.html">
+            
+                    
+                    数据预处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="手写数字识别代码.html">
+            
+                <a href="手写数字识别代码.html">
+            
+                    
+                    实现手写数字识别代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="卷积神经网络.html">
+            
+                <a href="卷积神经网络.html">
+            
+                    
+                    卷积神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    图像分类
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../ppocr/readme.html">
+            
+                <a href="../ppocr/readme.html">
+            
+                    
+                    ppocr
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../ppocr/db文本检测/readme.html">
+            
+                <a href="../ppocr/db文本检测/readme.html">
+            
+                    
+                    文本检测
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../ppocr/db文本检测/文本检测算法的详细实现/readme.html">
+            
+                <a href="../ppocr/db文本检测/文本检测算法的详细实现/readme.html">
+            
+                    
+                    文本检测算法的详细实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1" data-path="../ppocr/db文本检测/文本检测算法的详细实现/01DB文本检测算法原理.html">
+            
+                <a href="../ppocr/db文本检测/文本检测算法的详细实现/01DB文本检测算法原理.html">
+            
+                    
+                    DB文本检测算法原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2" data-path="../ppocr/db文本检测/文本检测算法的详细实现/02DB文本检测模型构建.html">
+            
+                <a href="../ppocr/db文本检测/文本检测算法的详细实现/02DB文本检测模型构建.html">
+            
+                    
+                    DB文本检测算法模型构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../ppocr/db文本检测/训练DB文字检测模型/readme.html">
+            
+                <a href="../ppocr/db文本检测/训练DB文字检测模型/readme.html">
+            
+                    
+                    训练DB文本检测模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.1" data-path="../ppocr/db文本检测/训练DB文字检测模型/01图片标签生成.html">
+            
+                <a href="../ppocr/db文本检测/训练DB文字检测模型/01图片标签生成.html">
+            
+                    
+                    生成图片标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2" data-path="../ppocr/db文本检测/训练DB文字检测模型/02_损失函数.html">
+            
+                <a href="../ppocr/db文本检测/训练DB文字检测模型/02_损失函数.html">
+            
+                    
+                    损失函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.3" data-path="../ppocr/db文本检测/训练DB文字检测模型/03_完整的训练集生成.html">
+            
+                <a href="../ppocr/db文本检测/训练DB文字检测模型/03_完整的训练集生成.html">
+            
+                    
+                    完整训练集生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.4" data-path="../ppocr/db文本检测/训练DB文字检测模型/04模型构建.html">
+            
+                <a href="../ppocr/db文本检测/训练DB文字检测模型/04模型构建.html">
+            
+                    
+                    模型构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.5" data-path="../ppocr/db文本检测/训练DB文字检测模型/05_前向传播和反向传播.html">
+            
+                <a href="../ppocr/db文本检测/训练DB文字检测模型/05_前向传播和反向传播.html">
+            
+                    
+                    前向传播和反向传播
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.6" data-path="../ppocr/db文本检测/训练DB文字检测模型/06db模型后处理.html">
+            
+                <a href="../ppocr/db文本检测/训练DB文字检测模型/06db模型后处理.html">
+            
+                    
+                    DB模型后处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.7" data-path="../ppocr/db文本检测/训练DB文字检测模型/07模型评估.html">
+            
+                <a href="../ppocr/db文本检测/训练DB文字检测模型/07模型评估.html">
+            
+                    
+                    模型评估
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >数据预处理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6570;&#x636E;&#x96C6;&#x6574;&#x7406;">&#x6570;&#x636E;&#x96C6;&#x6574;&#x7406;</h1>
+<p><a href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/02_paddle2.0_develop/03_data_preprocessing_cn.html" target="_blank">https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/02_paddle2.0_develop/03_data_preprocessing_cn.html</a></p>
+<p>&#x8FD9;&#x91CC;&#x4EE5;&#x624B;&#x5199;&#x6570;&#x5B57;&#x8BC6;&#x522B;&#x7684;&#x4E3A;&#x4F8B;</p>
+<p>&#x6570;&#x636E;&#x96C6;&#x94FE;&#x63A5;&#xFF1A;
+&#x94FE;&#x63A5;&#xFF1A;<a href="https://pan.baidu.com/s/1xno64_GpTwgsYQC8j6YeSw" target="_blank">https://pan.baidu.com/s/1xno64_GpTwgsYQC8j6YeSw</a> 
+&#x63D0;&#x53D6;&#x7801;&#xFF1A;w4zc</p>
+<p><img src="https://raw.githubusercontent.com/xuyouqian/picgo/master/20220128093247.png" alt="1"></p>
+<p><img src="https://raw.githubusercontent.com/xuyouqian/picgo/master/20220128093511.png" alt=""></p>
+<h3 id="&#x4ECE;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;">&#x4ECE;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;</h3>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> paddle
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> paddle.nn.functional <span class="hljs-keyword">as</span> F
+
+
+<span class="hljs-keyword">from</span> paddle.io <span class="hljs-keyword">import</span> Dataset
+<span class="hljs-keyword">from</span> paddle.io <span class="hljs-keyword">import</span> DataLoader
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">readfile</span><span class="hljs-params">(path, label)</span>:</span>
+    <span class="hljs-comment"># label &#x662F;&#x4E00;&#x500B; boolean variable&#xFF0C;&#x4EE3;&#x8868;&#x9700;&#x4E0D;&#x9700;&#x8981;&#x56DE;&#x50B3; y &#x503C;</span>
+    image_dir = os.listdir(path)
+    x = np.zeros((len(image_dir), <span class="hljs-number">28</span> * <span class="hljs-number">28</span>,), dtype=np.uint8)
+    y = np.zeros((len(image_dir)), dtype=np.uint8)
+
+    <span class="hljs-keyword">for</span> i, file <span class="hljs-keyword">in</span> enumerate(image_dir):
+
+        <span class="hljs-comment"># &#x5982;&#x679C;&#x4E0D;&#x8BBE;&#x7F6E;cv2.IMREAD_GRAYSCALE&#x4F1A;&#x83B7;&#x53D6;3&#x901A;&#x9053;&#x7684;array</span>
+        img = cv2.imread(os.path.join(path, file), cv2.IMREAD_GRAYSCALE)
+        x[i, :] = img.reshape(<span class="hljs-number">-1</span>)
+        <span class="hljs-keyword">if</span> label:
+            y[i] = int(file.split(<span class="hljs-string">&quot;_&quot;</span>)[<span class="hljs-number">-1</span>][:<span class="hljs-number">-4</span>])  <span class="hljs-comment"># &#x53D6;-4&#x4F5C;&#x4E3A;&#x91CD;&#x70B9;&#x662F;&#x4E3A;&#x4E86;&#x53BB;&#x6389;.png &#x53EA;&#x622A;&#x53D6;&#x6807;&#x7B7E;</span>
+    <span class="hljs-keyword">if</span> label:
+        <span class="hljs-keyword">return</span> x, y
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> x
+</code></pre>
+<h3 id="&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x96C6;&#x7684;&#x7C7B;">&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x96C6;&#x7684;&#x7C7B;</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyDataset</span><span class="hljs-params">(Dataset)</span>:</span>  <span class="hljs-comment"># &#x5B9A;&#x4E49;Dataset&#x7684;&#x5B50;&#x7C7B;MyDataset</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, path, transform=None, mode=<span class="hljs-string">&apos;train&apos;</span>)</span>:</span>
+        super(MyDataset, self).__init__()
+
+        self.transform = transform
+        <span class="hljs-keyword">if</span> mode == <span class="hljs-string">&quot;train&quot;</span>:
+            self.x, self.y = readfile(path, <span class="hljs-keyword">True</span>)
+        <span class="hljs-keyword">else</span>:
+            self.x = readfile(path, <span class="hljs-keyword">False</span>)
+            self.y = <span class="hljs-keyword">None</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__len__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E5F;&#x5FC5;&#x987B;&#x8981;&#x5199;&#xFF0C;&#x5B83;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x6570;&#x636E;&#x96C6;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x591A;&#x5C11;&#x5F20;&#x56FE;&#x7247;&#xFF0C;&#x8981;&#x548C;loader&#x7684;&#x957F;&#x5EA6;&#x4F5C;&#x533A;&#x5206;</span>
+        <span class="hljs-keyword">return</span> len(self.x)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__getitem__</span><span class="hljs-params">(self, index)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;
+        &#x5B9E;&#x73B0;__getitem__&#x65B9;&#x6CD5;&#xFF0C;&#x5B9A;&#x4E49;&#x6307;&#x5B9A;index&#x65F6;&#x5982;&#x4F55;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x5355;&#x6761;&#x6570;&#x636E;&#xFF08;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x6807;&#x7B7E;&#xFF09;
+        &quot;&quot;&quot;</span>
+        X = self.x[index]
+        <span class="hljs-keyword">if</span> self.transform <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">None</span>:
+            X = self.transform(X)
+        <span class="hljs-keyword">if</span> self.y <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">None</span>:
+            Y = self.y[index]
+            <span class="hljs-keyword">return</span> X, Y
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> X
+</code></pre>
+<ul>
+<li>&#x6570;&#x636E;&#x589E;&#x5F3A;&#x5904;&#x7406;</li>
+</ul>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">transform</span><span class="hljs-params">(array)</span>:</span>
+    <span class="hljs-keyword">return</span> array / <span class="hljs-number">255</span>
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x662F;&#x7C97;&#x66B4;&#x7684;&#x8FDB;&#x884C;&#x5F52;&#x4E00;&#x5316;&#xFF0C;&#x522B;&#x7684;&#x64CD;&#x4F5C;&#x6682;&#x65F6;&#x6CA1;&#x6709;&#xFF0C;&#x8BE6;&#x7EC6;&#x7684;&#x6570;&#x636E;&#x589E;&#x5F3A;api&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/02_paddle2.0_develop/03_data_preprocessing_cn.html" target="_blank">https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/02_paddle2.0_develop/03_data_preprocessing_cn.html</a></p>
+<h3 id="&#x4F7F;&#x7528;dataloader-&#x52A0;&#x8F7D;">&#x4F7F;&#x7528;dataloader &#x52A0;&#x8F7D;</h3>
+<pre><code class="lang-python">test_dataset = MyDataset(<span class="hljs-string">&apos;data/test&apos;</span>, transform=transform, mode=<span class="hljs-string">&apos;train&apos;</span>)
+train_dataset = MyDataset(<span class="hljs-string">&apos;data/train&apos;</span>, transform=transform, mode=<span class="hljs-string">&apos;train&apos;</span>)
+
+test_loader = DataLoader(test_dataset, batch_size=<span class="hljs-number">16</span>, shuffle=<span class="hljs-keyword">True</span>)
+train_loader = DataLoader(train_dataset, batch_size=<span class="hljs-number">16</span>, shuffle=<span class="hljs-keyword">True</span>)
+
+
+ <span class="hljs-keyword">for</span> batch_id, data <span class="hljs-keyword">in</span> enumerate(train_loader()):
+            images = data[<span class="hljs-number">0</span>].astype(<span class="hljs-string">&apos;float32&apos;</span>)
+            labels = data[<span class="hljs-number">1</span>].astype(<span class="hljs-string">&apos;float32&apos;</span>)
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="readme.html" class="navigation navigation-prev " aria-label="Previous page: paddlepaddle">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="手写数字识别代码.html" class="navigation navigation-next " aria-label="Next page: 实现手写数字识别代码">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"数据预处理","level":"1.2.1","depth":2,"next":{"title":"实现手写数字识别代码","level":"1.2.2","depth":2,"path":"pdpd/手写数字识别代码.md","ref":"pdpd/手写数字识别代码.md","articles":[]},"previous":{"title":"paddlepaddle","level":"1.2","depth":1,"path":"pdpd/readme.md","ref":"pdpd/readme.md","articles":[{"title":"数据预处理","level":"1.2.1","depth":2,"path":"pdpd/数据集.md","ref":"pdpd/数据集.md","articles":[]},{"title":"实现手写数字识别代码","level":"1.2.2","depth":2,"path":"pdpd/手写数字识别代码.md","ref":"pdpd/手写数字识别代码.md","articles":[]},{"title":"卷积神经网络","level":"1.2.3","depth":2,"path":"pdpd/卷积神经网络.md","ref":"pdpd/卷积神经网络.md","articles":[]},{"title":"图像分类","level":"1.2.4","depth":2,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pdpd/数据集.md","mtime":"2022-02-26T05:38:00.899Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-26T06:28:45.468Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

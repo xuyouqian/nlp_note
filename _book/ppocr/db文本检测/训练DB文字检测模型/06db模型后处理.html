@@ -1,0 +1,699 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>DB模型后处理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="07模型评估.html" />
+    
+    
+    <link rel="prev" href="05_前向传播和反向传播.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../pdpd/readme.html">
+            
+                <a href="../../../pdpd/readme.html">
+            
+                    
+                    paddlepaddle
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../../pdpd/数据集.html">
+            
+                <a href="../../../pdpd/数据集.html">
+            
+                    
+                    数据预处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../../pdpd/手写数字识别代码.html">
+            
+                <a href="../../../pdpd/手写数字识别代码.html">
+            
+                    
+                    实现手写数字识别代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../../pdpd/卷积神经网络.html">
+            
+                <a href="../../../pdpd/卷积神经网络.html">
+            
+                    
+                    卷积神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    图像分类
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../readme.html">
+            
+                <a href="../../readme.html">
+            
+                    
+                    ppocr
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../readme.html">
+            
+                <a href="../readme.html">
+            
+                    
+                    文本检测
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../文本检测算法的详细实现/readme.html">
+            
+                <a href="../文本检测算法的详细实现/readme.html">
+            
+                    
+                    文本检测算法的详细实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1" data-path="../文本检测算法的详细实现/01DB文本检测算法原理.html">
+            
+                <a href="../文本检测算法的详细实现/01DB文本检测算法原理.html">
+            
+                    
+                    DB文本检测算法原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2" data-path="../文本检测算法的详细实现/02DB文本检测模型构建.html">
+            
+                <a href="../文本检测算法的详细实现/02DB文本检测模型构建.html">
+            
+                    
+                    DB文本检测算法模型构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    训练DB文本检测模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.1" data-path="01图片标签生成.html">
+            
+                <a href="01图片标签生成.html">
+            
+                    
+                    生成图片标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2" data-path="02_损失函数.html">
+            
+                <a href="02_损失函数.html">
+            
+                    
+                    损失函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.3" data-path="03_完整的训练集生成.html">
+            
+                <a href="03_完整的训练集生成.html">
+            
+                    
+                    完整训练集生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.4" data-path="04模型构建.html">
+            
+                <a href="04模型构建.html">
+            
+                    
+                    模型构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.5" data-path="05_前向传播和反向传播.html">
+            
+                <a href="05_前向传播和反向传播.html">
+            
+                    
+                    前向传播和反向传播
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.1.2.6" data-path="06db模型后处理.html">
+            
+                <a href="06db模型后处理.html">
+            
+                    
+                    DB模型后处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.7" data-path="07模型评估.html">
+            
+                <a href="07模型评估.html">
+            
+                    
+                    模型评估
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >DB模型后处理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="db&#x6A21;&#x578B;&#x540E;&#x5904;&#x7406;">DB&#x6A21;&#x578B;&#x540E;&#x5904;&#x7406;</h1>
+<p>DB head&#x7F51;&#x7EDC;&#x7684;&#x8F93;&#x51FA;&#x5F62;&#x72B6;&#x548C;&#x539F;&#x56FE;&#x76F8;&#x540C;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;DB head&#x7F51;&#x7EDC;&#x8F93;&#x51FA;&#x7684;&#x4E09;&#x4E2A;&#x901A;&#x9053;&#x7279;&#x5F81;&#x5206;&#x522B;&#x4E3A;&#x6587;&#x672C;&#x533A;&#x57DF;&#x7684;&#x6982;&#x7387;&#x56FE;&#x3001;&#x9608;&#x503C;&#x56FE;&#x548C;&#x4E8C;&#x503C;&#x56FE;&#x3002;</p>
+<p>&#x5728;&#x8BAD;&#x7EC3;&#x9636;&#x6BB5;&#xFF0C;3&#x4E2A;&#x9884;&#x6D4B;&#x56FE;&#x4E0E;&#x771F;&#x5B9E;&#x6807;&#x7B7E;&#x5171;&#x540C;&#x5B8C;&#x6210;&#x635F;&#x5931;&#x51FD;&#x6570;&#x7684;&#x8BA1;&#x7B97;&#x4EE5;&#x53CA;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#xFF1B;</p>
+<p>&#x5728;&#x9884;&#x6D4B;&#x9636;&#x6BB5;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6982;&#x7387;&#x56FE;&#x5373;&#x53EF;&#xFF0C;DB&#x540E;&#x5904;&#x7406;&#x51FD;&#x6570;&#x6839;&#x636E;&#x6982;&#x7387;&#x56FE;&#x4E2D;&#x6587;&#x672C;&#x533A;&#x57DF;&#x7684;&#x54CD;&#x5E94;&#x8BA1;&#x7B97;&#x51FA;&#x5305;&#x56F4;&#x6587;&#x672C;&#x54CD;&#x5E94;&#x533A;&#x57DF;&#x7684;&#x6587;&#x672C;&#x6846;&#x5750;&#x6807;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x7F51;&#x7EDC;&#x9884;&#x6D4B;&#x7684;&#x6982;&#x7387;&#x56FE;&#x662F;&#x7ECF;&#x8FC7;&#x6536;&#x7F29;&#x540E;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x540E;&#x5904;&#x7406;&#x6B65;&#x9AA4;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x504F;&#x79FB;&#x503C;&#x5C06;&#x9884;&#x6D4B;&#x7684;&#x591A;&#x8FB9;&#x5F62;&#x533A;&#x57DF;&#x8FDB;&#x884C;&#x6269;&#x5F20;&#xFF0C;&#x5373;&#x53EF;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x6587;&#x672C;&#x6846;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> ppocr.data.imaug.operators <span class="hljs-keyword">import</span> DecodeImage, NormalizeImage, ToCHWImage, KeepKeys, DetResizeForTest
+
+<span class="hljs-keyword">from</span> ppocr.data <span class="hljs-keyword">import</span> transform
+<span class="hljs-keyword">from</span> ppocr.postprocess.db_postprocess <span class="hljs-keyword">import</span> DBPostProcess
+<span class="hljs-keyword">from</span> T07_create_base_model <span class="hljs-keyword">import</span> BaseModel
+<span class="hljs-keyword">import</span> json
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> six
+<span class="hljs-keyword">import</span> os
+
+<span class="hljs-keyword">import</span> paddle
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">load_model</span><span class="hljs-params">(model, path)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x6839;&#x636E;path&#x63D0;&#x4F9B;&#x7684;&#x6A21;&#x578B;&#x6570;&#x636E;&#x52A0;&#x8F7D;&#x5165;&#x6A21;&#x578B;
+    :param model:
+    :param path:
+    :return:
+    &quot;&quot;&quot;</span>
+    <span class="hljs-comment"># load params from trained model</span>
+    params = paddle.load(path)
+    state_dict = model.state_dict()
+    new_state_dict = {}
+    <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> state_dict.items():
+        <span class="hljs-keyword">if</span> key <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> params:
+            print(<span class="hljs-string">&quot;{} not in loaded params {} !&quot;</span>.format(
+                key, params.keys()))
+            <span class="hljs-keyword">continue</span>
+        pre_value = params[key]
+        <span class="hljs-keyword">if</span> list(value.shape) == list(pre_value.shape):
+            new_state_dict[key] = pre_value
+        <span class="hljs-keyword">else</span>:
+            print(
+                <span class="hljs-string">&quot;The shape of model params {} {} not matched with loaded params shape {} !&quot;</span>.
+                    format(key, value.shape, pre_value.shape))
+    model.set_state_dict(new_state_dict)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DecodeImage</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot; decode image &quot;&quot;&quot;</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, img_mode=<span class="hljs-string">&apos;RGB&apos;</span>, channel_first=False, **kwargs)</span>:</span>
+        self.img_mode = img_mode
+        self.channel_first = channel_first
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__call__</span><span class="hljs-params">(self, data)</span>:</span>
+        img = data[<span class="hljs-string">&apos;image&apos;</span>]
+        <span class="hljs-keyword">if</span> six.PY2:
+            <span class="hljs-keyword">assert</span> type(img) <span class="hljs-keyword">is</span> str <span class="hljs-keyword">and</span> len(
+                img) &gt; <span class="hljs-number">0</span>, <span class="hljs-string">&quot;invalid input &apos;img&apos; in DecodeImage&quot;</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">assert</span> type(img) <span class="hljs-keyword">is</span> bytes <span class="hljs-keyword">and</span> len(
+                img) &gt; <span class="hljs-number">0</span>, <span class="hljs-string">&quot;invalid input &apos;img&apos; in DecodeImage&quot;</span>
+        <span class="hljs-comment"># 1. &#x56FE;&#x50CF;&#x89E3;&#x7801;</span>
+        img = np.frombuffer(img, dtype=<span class="hljs-string">&apos;uint8&apos;</span>)
+        img = cv2.imdecode(img, <span class="hljs-number">1</span>)
+
+        <span class="hljs-keyword">if</span> img <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span>
+        <span class="hljs-keyword">if</span> self.img_mode == <span class="hljs-string">&apos;GRAY&apos;</span>:
+            img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
+        <span class="hljs-keyword">elif</span> self.img_mode == <span class="hljs-string">&apos;RGB&apos;</span>:
+            <span class="hljs-keyword">assert</span> img.shape[<span class="hljs-number">2</span>] == <span class="hljs-number">3</span>, <span class="hljs-string">&apos;invalid shape of image[%s]&apos;</span> % (img.shape)
+            img = img[:, :, ::<span class="hljs-number">-1</span>]
+
+        <span class="hljs-keyword">if</span> self.channel_first:
+            img = img.transpose((<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>))
+        <span class="hljs-comment"># 2. &#x89E3;&#x7801;&#x540E;&#x7684;&#x56FE;&#x50CF;&#x653E;&#x5728;&#x5B57;&#x5178;&#x4E2D;</span>
+        data[<span class="hljs-string">&apos;image&apos;</span>] = img.astype(<span class="hljs-string">&apos;float32&apos;</span>)
+        <span class="hljs-keyword">return</span> data
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_operators</span><span class="hljs-params">(op_param_list, global_config=None)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    create operators based on the config
+
+    Args:
+        params(list): a dict list, used to create some operators
+    &quot;&quot;&quot;</span>
+    <span class="hljs-keyword">assert</span> isinstance(op_param_list, list), (<span class="hljs-string">&apos;operator config should be a list&apos;</span>)
+    ops = []
+    <span class="hljs-keyword">for</span> operator <span class="hljs-keyword">in</span> op_param_list:
+        <span class="hljs-keyword">assert</span> isinstance(operator,
+                          dict) <span class="hljs-keyword">and</span> len(operator) == <span class="hljs-number">1</span>, <span class="hljs-string">&quot;yaml format error&quot;</span>
+        op_name = list(operator)[<span class="hljs-number">0</span>]
+        param = {} <span class="hljs-keyword">if</span> operator[op_name] <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span> <span class="hljs-keyword">else</span> operator[op_name]
+        <span class="hljs-keyword">if</span> global_config <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">None</span>:
+            param.update(global_config)
+        op = eval(op_name)(**param)
+        ops.append(op)
+    <span class="hljs-keyword">return</span> ops
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">draw_det_res</span><span class="hljs-params">(dt_boxes, img, img_name, save_path)</span>:</span>
+    <span class="hljs-keyword">if</span> len(dt_boxes) &gt; <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">import</span> cv2
+        src_im = img
+        <span class="hljs-keyword">for</span> box <span class="hljs-keyword">in</span> dt_boxes:
+            box = box.astype(np.int32).reshape((<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>))
+            cv2.polylines(src_im, [box], <span class="hljs-keyword">True</span>, color=(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), thickness=<span class="hljs-number">2</span>)
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(save_path):
+            os.makedirs(save_path)
+        save_path = os.path.join(save_path, os.path.basename(img_name))
+        cv2.imwrite(save_path, src_im)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+
+    process_config = {<span class="hljs-string">&apos;thresh&apos;</span>: <span class="hljs-number">0.3</span>, <span class="hljs-string">&apos;box_thresh&apos;</span>: <span class="hljs-number">0.6</span>, <span class="hljs-string">&apos;max_candidates&apos;</span>: <span class="hljs-number">1000</span>, <span class="hljs-string">&apos;unclip_ratio&apos;</span>: <span class="hljs-number">1.5</span>}
+
+    <span class="hljs-comment"># db &#x540E;&#x5904;&#x7406;&#x8FC7;&#x7A0B;</span>
+    post_process_class = DBPostProcess(**process_config)
+    base_model = BaseModel()
+    load_model(base_model, <span class="hljs-string">r&apos;D:\code\ocr_pdpd\PaddleOCR\data\det_mv3_db_v2.0_train\best_accuracy.pdparams&apos;</span>)
+
+    transforms = [{<span class="hljs-string">&apos;DecodeImage&apos;</span>: {<span class="hljs-string">&apos;img_mode&apos;</span>: <span class="hljs-string">&apos;BGR&apos;</span>, <span class="hljs-string">&apos;channel_first&apos;</span>: <span class="hljs-keyword">False</span>}},
+                  {<span class="hljs-string">&apos;DetResizeForTest&apos;</span>: {<span class="hljs-string">&apos;image_shape&apos;</span>: [<span class="hljs-number">736</span>, <span class="hljs-number">1280</span>]}},
+                  {<span class="hljs-string">&apos;NormalizeImage&apos;</span>: {<span class="hljs-string">&apos;scale&apos;</span>: <span class="hljs-string">&apos;1./255.&apos;</span>, <span class="hljs-string">&apos;mean&apos;</span>: [<span class="hljs-number">0.485</span>, <span class="hljs-number">0.456</span>, <span class="hljs-number">0.406</span>], <span class="hljs-string">&apos;std&apos;</span>: [<span class="hljs-number">0.229</span>, <span class="hljs-number">0.224</span>, <span class="hljs-number">0.225</span>],
+                                      <span class="hljs-string">&apos;order&apos;</span>: <span class="hljs-string">&apos;hwc&apos;</span>}},
+                  {<span class="hljs-string">&apos;ToCHWImage&apos;</span>: <span class="hljs-keyword">None</span>}, {<span class="hljs-string">&apos;KeepKeys&apos;</span>: {<span class="hljs-string">&apos;keep_keys&apos;</span>: [<span class="hljs-string">&apos;image&apos;</span>, <span class="hljs-string">&apos;shape&apos;</span>]}}]
+
+
+
+    ops = create_operators(transforms)
+
+    <span class="hljs-keyword">with</span> open(<span class="hljs-string">r&apos;D:\code\ocr_pdpd\PaddleOCR\data\img_12.jpg&apos;</span>, <span class="hljs-string">&apos;rb&apos;</span>) <span class="hljs-keyword">as</span> f:
+        img = f.read()
+        data = {<span class="hljs-string">&apos;image&apos;</span>: img}
+    batch = transform(data, ops)
+
+    images = np.expand_dims(batch[<span class="hljs-number">0</span>], axis=<span class="hljs-number">0</span>)
+    shape_list = np.expand_dims(batch[<span class="hljs-number">1</span>], axis=<span class="hljs-number">0</span>)
+    images = paddle.to_tensor(images)
+    base_model.eval()
+    preds = base_model(images)  <span class="hljs-comment"># [1,1,736,1280]</span>
+
+    <span class="hljs-comment"># import matplotlib.pyplot as plt</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># plt.figure(figsize=(10, 10))</span>
+    <span class="hljs-comment"># plt.imshow(preds[&apos;maps&apos;][0][0])</span>
+    <span class="hljs-comment"># plt.show()</span>
+
+    <span class="hljs-comment"># &#x8FD9;&#x91CC;&#x9762;&#x662F;&#x5F88;&#x591A;&#x6846;&#x7684;&#x4FE1;&#x606F;</span>
+    post_result = post_process_class(preds, shape_list)
+
+    src_img = cv2.imread(<span class="hljs-string">r&apos;D:\code\ocr_pdpd\PaddleOCR\data\img_12.jpg&apos;</span>)
+
+    dt_boxes_json = []
+    <span class="hljs-comment"># parser boxes if post_result is dict</span>
+    <span class="hljs-keyword">if</span> isinstance(post_result, dict):
+        det_box_json = {}
+        <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> post_result.keys():
+            boxes = post_result[k][<span class="hljs-number">0</span>][<span class="hljs-string">&apos;points&apos;</span>]
+            dt_boxes_list = []
+            <span class="hljs-keyword">for</span> box <span class="hljs-keyword">in</span> boxes:
+                tmp_json = {<span class="hljs-string">&quot;transcription&quot;</span>: <span class="hljs-string">&quot;&quot;</span>}
+                tmp_json[<span class="hljs-string">&apos;points&apos;</span>] = box.tolist()
+                dt_boxes_list.append(tmp_json)
+            det_box_json[k] = dt_boxes_list
+            save_det_path = <span class="hljs-string">&apos;&apos;</span>
+            draw_det_res(boxes,  src_img, <span class="hljs-string">&apos;res&apos;</span>, save_det_path)
+    <span class="hljs-keyword">else</span>:
+        boxes = post_result[<span class="hljs-number">0</span>][<span class="hljs-string">&apos;points&apos;</span>]
+        dt_boxes_json = []
+        <span class="hljs-comment"># write result</span>
+        <span class="hljs-keyword">for</span> box <span class="hljs-keyword">in</span> boxes:
+            tmp_json = {<span class="hljs-string">&quot;transcription&quot;</span>: <span class="hljs-string">&quot;&quot;</span>}
+            tmp_json[<span class="hljs-string">&apos;points&apos;</span>] = box.tolist()
+            dt_boxes_json.append(tmp_json)
+        save_det_path = <span class="hljs-string">&apos;savepath&apos;</span>
+        draw_det_res(boxes,  src_img, <span class="hljs-string">&apos;file.jpg&apos;</span>, save_det_path)
+</code></pre>
+<p>&#x4ECE;&#x53EF;&#x89C6;&#x5316;&#x7ED3;&#x679C;&#x4E2D;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;DB&#x7684;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x662F;&#x6587;&#x672C;&#x533A;&#x57DF;&#x7684;&#x4E8C;&#x503C;&#x56FE;&#xFF0C;&#x5C5E;&#x4E8E;&#x6587;&#x672C;&#x533A;&#x57DF;&#x7684;&#x54CD;&#x5E94;&#x66F4;&#x9AD8;&#xFF0C;&#x975E;&#x6587;&#x672C;&#x7684;&#x80CC;&#x666F;&#x533A;&#x57DF;&#x54CD;&#x5E94;&#x503C;&#x4F4E;&#x3002;DB&#x7684;&#x540E;&#x5904;&#x7406;&#x5373;&#x662F;&#x6C42;&#x8FD9;&#x4E9B;&#x54CD;&#x5E94;&#x533A;&#x57DF;&#x7684;&#x6700;&#x5C0F;&#x5305;&#x56F4;&#x6846;&#xFF0C;&#x8FDB;&#x800C;&#x5F97;&#x5230;&#x6BCF;&#x4E2A;&#x6587;&#x672C;&#x533A;&#x57DF;&#x7684;&#x5750;&#x6807;&#x3002; &#x53E6;&#x5916;&#xFF0C;&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x540E;&#x5904;&#x7406;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x8C03;&#x6574;&#x6587;&#x672C;&#x6846;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x6216;&#x8005;&#x8FC7;&#x6EE4;&#x68C0;&#x6D4B;&#x6548;&#x679C;&#x5DEE;&#x7684;&#x6587;&#x672C;&#x6846;&#x3002;</p>
+<p>DB&#x540E;&#x5904;&#x7406;&#x6709;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5206;&#x522B;&#x662F;&#xFF1A;</p>
+<ul>
+<li>thresh: DBPostProcess&#x4E2D;&#x5206;&#x5272;&#x56FE;&#x8FDB;&#x884C;&#x4E8C;&#x503C;&#x5316;&#x7684;&#x9608;&#x503C;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;0.3</li>
+<li>box_thresh: DBPostProcess&#x4E2D;&#x5BF9;&#x8F93;&#x51FA;&#x6846;&#x8FDB;&#x884C;&#x8FC7;&#x6EE4;&#x7684;&#x9608;&#x503C;&#xFF0C;&#x4F4E;&#x4E8E;&#x6B64;&#x9608;&#x503C;&#x7684;&#x6846;&#x4E0D;&#x4F1A;&#x8F93;&#x51FA;</li>
+<li>unclip_ratio: DBPostProcess&#x4E2D;&#x5BF9;&#x6587;&#x672C;&#x6846;&#x8FDB;&#x884C;&#x653E;&#x5927;&#x7684;&#x6BD4;&#x4F8B;</li>
+<li>max_candidates: DBPostProcess&#x4E2D;&#x8F93;&#x51FA;&#x7684;&#x6700;&#x5927;&#x6587;&#x672C;&#x6846;&#x6570;&#x91CF;&#xFF0C;&#x9ED8;&#x8BA4;1000</li>
+</ul>
+<p>&#x4ECE;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x7684;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;&#x589E;&#x5927;DB&#x540E;&#x5904;&#x7406;&#x7684;unclip_ratio&#x53C2;&#x6570;&#x4E4B;&#x540E;&#xFF0C;&#x9884;&#x6D4B;&#x7684;&#x6587;&#x672C;&#x6846;&#x660E;&#x663E;&#x53D8;&#x5927;&#x4E86;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5F53;&#x8BAD;&#x7EC3;&#x7ED3;&#x679C;&#x4E0D;&#x7B26;&#x5408;&#x6211;&#x4EEC;&#x9884;&#x671F;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x6574;&#x540E;&#x5904;&#x7406;&#x53C2;&#x6570;&#x8C03;&#x6574;&#x6587;&#x672C;&#x68C0;&#x6D4B;&#x7ED3;&#x679C;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x8C03;&#x6574;&#x5176;&#x4ED6;&#x4E09;&#x4E2A;&#x53C2;&#x6570;thresh&#xFF0C;box_thresh&#xFF0C;max_candidates&#x5BF9;&#x6BD4;&#x68C0;&#x6D4B;&#x7ED3;&#x679C;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x6A21;&#x578B;&#x9884;&#x6D4B;&#x7684;&#x6982;&#x7387;&#x56FE;</p>
+<p><img src="https://gitee.com/xuyouqian/drawing-bed/raw/master/img/20220221170603.png" alt=""></p>
+<p>&#x540E;&#x5904;&#x7406;&#x6839;&#x636E;&#x6982;&#x7387;&#x56FE;&#x751F;&#x6210;&#x6587;&#x672C;&#x6846;</p>
+<p>&#x7F29;&#x653E;&#x7CFB;&#x6570;1.0</p>
+<p><img src="https://gitee.com/xuyouqian/drawing-bed/raw/master/img/20220221170923.png" alt=""></p>
+<p>&#x7F29;&#x653E;&#x7CFB;&#x6570;1.5</p>
+<p><img src="https://gitee.com/xuyouqian/drawing-bed/raw/master/img/20220221171026.png" alt=""></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="05_前向传播和反向传播.html" class="navigation navigation-prev " aria-label="Previous page: 前向传播和反向传播">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="07模型评估.html" class="navigation navigation-next " aria-label="Next page: 模型评估">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"DB模型后处理","level":"1.3.1.2.6","depth":4,"next":{"title":"模型评估","level":"1.3.1.2.7","depth":4,"path":"ppocr/db文本检测/训练DB文字检测模型/07模型评估.md","ref":"ppocr/db文本检测/训练DB文字检测模型/07模型评估.md","articles":[]},"previous":{"title":"前向传播和反向传播","level":"1.3.1.2.5","depth":4,"path":"ppocr/db文本检测/训练DB文字检测模型/05_前向传播和反向传播.md","ref":"ppocr/db文本检测/训练DB文字检测模型/05_前向传播和反向传播.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ppocr/db文本检测/训练DB文字检测模型/06db模型后处理.md","mtime":"2022-02-21T09:14:12.280Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-26T06:28:45.468Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

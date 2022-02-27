@@ -1,0 +1,531 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>DB文本检测算法原理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="02DB文本检测模型构建.html" />
+    
+    
+    <link rel="prev" href="readme.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../pdpd/readme.html">
+            
+                <a href="../../../pdpd/readme.html">
+            
+                    
+                    paddlepaddle
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../../pdpd/数据集.html">
+            
+                <a href="../../../pdpd/数据集.html">
+            
+                    
+                    数据预处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../../pdpd/手写数字识别代码.html">
+            
+                <a href="../../../pdpd/手写数字识别代码.html">
+            
+                    
+                    实现手写数字识别代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../../pdpd/卷积神经网络.html">
+            
+                <a href="../../../pdpd/卷积神经网络.html">
+            
+                    
+                    卷积神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    图像分类
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../readme.html">
+            
+                <a href="../../readme.html">
+            
+                    
+                    ppocr
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../readme.html">
+            
+                <a href="../readme.html">
+            
+                    
+                    文本检测
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    文本检测算法的详细实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1.1.1" data-path="01DB文本检测算法原理.html">
+            
+                <a href="01DB文本检测算法原理.html">
+            
+                    
+                    DB文本检测算法原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2" data-path="02DB文本检测模型构建.html">
+            
+                <a href="02DB文本检测模型构建.html">
+            
+                    
+                    DB文本检测算法模型构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../训练DB文字检测模型/readme.html">
+            
+                <a href="../训练DB文字检测模型/readme.html">
+            
+                    
+                    训练DB文本检测模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.1" data-path="../训练DB文字检测模型/01图片标签生成.html">
+            
+                <a href="../训练DB文字检测模型/01图片标签生成.html">
+            
+                    
+                    生成图片标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2" data-path="../训练DB文字检测模型/02_损失函数.html">
+            
+                <a href="../训练DB文字检测模型/02_损失函数.html">
+            
+                    
+                    损失函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.3" data-path="../训练DB文字检测模型/03_完整的训练集生成.html">
+            
+                <a href="../训练DB文字检测模型/03_完整的训练集生成.html">
+            
+                    
+                    完整训练集生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.4" data-path="../训练DB文字检测模型/04模型构建.html">
+            
+                <a href="../训练DB文字检测模型/04模型构建.html">
+            
+                    
+                    模型构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.5" data-path="../训练DB文字检测模型/05_前向传播和反向传播.html">
+            
+                <a href="../训练DB文字检测模型/05_前向传播和反向传播.html">
+            
+                    
+                    前向传播和反向传播
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.6" data-path="../训练DB文字检测模型/06db模型后处理.html">
+            
+                <a href="../训练DB文字检测模型/06db模型后处理.html">
+            
+                    
+                    DB模型后处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.7" data-path="../训练DB文字检测模型/07模型评估.html">
+            
+                <a href="../训练DB文字检测模型/07模型评估.html">
+            
+                    
+                    模型评估
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >DB文本检测算法原理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="db&#x6587;&#x672C;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;&#x539F;&#x7406;">DB&#x6587;&#x672C;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;&#x539F;&#x7406;</h2>
+<p><a href="https://arxiv.org/pdf/1911.08947.pdf" target="_blank">DB</a>&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x5206;&#x5272;&#x7684;&#x6587;&#x672C;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;&#xFF0C;&#x5176;&#x63D0;&#x51FA;&#x53EF;&#x5FAE;&#x5206;&#x9608;&#x503C;Differenttiable Binarization module&#xFF08;DB module&#xFF09;&#x91C7;&#x7528;&#x52A8;&#x6001;&#x7684;&#x9608;&#x503C;&#x533A;&#x5206;&#x6587;&#x672C;&#x533A;&#x57DF;&#x4E0E;&#x80CC;&#x666F;&#x3002;</p>
+<p><img src="https://ai-studio-static-online.cdn.bcebos.com/5eabdb59916a4267a049e5440f5093a63b6bfac9010844fb971aad0607d455a1" alt="img"></p>
+<p>&#x56FE;1 DB&#x6A21;&#x578B;&#x4E0E;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#x7684;&#x533A;&#x522B;</p>
+<p>&#x57FA;&#x4E8E;&#x5206;&#x5272;&#x7684;&#x666E;&#x901A;&#x6587;&#x672C;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;&#x5176;&#x6D41;&#x7A0B;&#x5982;&#x4E0A;&#x56FE;&#x4E2D;&#x7684;&#x84DD;&#x8272;&#x7BAD;&#x5934;&#x6240;&#x793A;&#xFF0C;&#x6B64;&#x7C7B;&#x65B9;&#x6CD5;&#x5F97;&#x5230;&#x5206;&#x5272;&#x7ED3;&#x679C;&#x4E4B;&#x540E;&#x91C7;&#x7528;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x9608;&#x503C;&#x5F97;&#x5230;&#x4E8C;&#x503C;&#x5316;&#x7684;&#x5206;&#x5272;&#x56FE;&#xFF0C;&#x4E4B;&#x540E;&#x91C7;&#x7528;&#x8BF8;&#x5982;&#x50CF;&#x7D20;&#x805A;&#x7C7B;&#x7684;&#x542F;&#x53D1;&#x5F0F;&#x7B97;&#x6CD5;&#x5F97;&#x5230;&#x6587;&#x672C;&#x533A;&#x57DF;&#x3002;</p>
+<p>DB&#x7B97;&#x6CD5;&#x7684;&#x6D41;&#x7A0B;&#x5982;&#x56FE;&#x4E2D;&#x7EA2;&#x8272;&#x7BAD;&#x5934;&#x6240;&#x793A;&#xFF0C;&#x6700;&#x5927;&#x7684;&#x4E0D;&#x540C;&#x5728;&#x4E8E;DB&#x6709;&#x4E00;&#x4E2A;&#x9608;&#x503C;&#x56FE;&#xFF0C;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x53BB;&#x9884;&#x6D4B;&#x56FE;&#x7247;&#x6BCF;&#x4E2A;&#x4F4D;&#x7F6E;&#x5904;&#x7684;&#x9608;&#x503C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x91C7;&#x7528;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x503C;&#xFF0C;&#x66F4;&#x597D;&#x7684;&#x5206;&#x79BB;&#x6587;&#x672C;&#x80CC;&#x666F;&#x4E0E;&#x524D;&#x666F;&#x3002;</p>
+<p>DB&#x7B97;&#x6CD5;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x4F18;&#x52BF;&#xFF1A;</p>
+<ol>
+<li>&#x7B97;&#x6CD5;&#x7ED3;&#x6784;&#x7B80;&#x5355;&#xFF0C;&#x65E0;&#x9700;&#x7E41;&#x7410;&#x7684;&#x540E;&#x5904;&#x7406;</li>
+<li>&#x5728;&#x5F00;&#x6E90;&#x6570;&#x636E;&#x4E0A;&#x62E5;&#x6709;&#x826F;&#x597D;&#x7684;&#x7CBE;&#x5EA6;&#x548C;&#x6027;&#x80FD;</li>
+</ol>
+<p>&#x5728;&#x4F20;&#x7EDF;&#x7684;&#x56FE;&#x50CF;&#x5206;&#x5272;&#x7B97;&#x6CD5;&#x4E2D;&#xFF0C;&#x83B7;&#x53D6;&#x6982;&#x7387;&#x56FE;&#x540E;&#xFF0C;&#x4F1A;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x4E8C;&#x503C;&#x5316;&#xFF08;Standard Binarize&#xFF09;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5C06;&#x4F4E;&#x4E8E;&#x9608;&#x503C;&#x7684;&#x50CF;&#x7D20;&#x70B9;&#x7F6E;0&#xFF0C;&#x9AD8;&#x4E8E;&#x9608;&#x503C;&#x7684;&#x50CF;&#x7D20;&#x70B9;&#x7F6E;1&#xFF0C;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="https://gitee.com/xuyouqian/drawing-bed/raw/master/img/20220221112725.png" alt=""></p>
+<p>&#x4F46;&#x662F;&#x6807;&#x51C6;&#x7684;&#x4E8C;&#x503C;&#x5316;&#x65B9;&#x6CD5;&#x662F;&#x4E0D;&#x53EF;&#x5FAE;&#x7684;&#xFF0C;&#x5BFC;&#x81F4;&#x7F51;&#x7EDC;&#x65E0;&#x6CD5;&#x7AEF;&#x5BF9;&#x7AEF;&#x8BAD;&#x7EC3;&#x3002;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;DB&#x7B97;&#x6CD5;&#x63D0;&#x51FA;&#x4E86;&#x53EF;&#x5FAE;&#x4E8C;&#x503C;&#x5316;&#xFF08;Differentiable Binarization&#xFF0C;DB&#xFF09;&#x3002;&#x53EF;&#x5FAE;&#x4E8C;&#x503C;&#x5316;&#x5C06;&#x6807;&#x51C6;&#x4E8C;&#x503C;&#x5316;&#x4E2D;&#x7684;&#x9636;&#x8DC3;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x4E86;&#x8FD1;&#x4F3C;&#xFF0C;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x516C;&#x5F0F;&#x8FDB;&#x884C;&#x4EE3;&#x66FF;&#xFF1A;</p>
+<p><img src="https://gitee.com/xuyouqian/drawing-bed/raw/master/img/20220221112806.png" alt=""></p>
+<p>&#x5176;&#x4E2D;&#xFF0C;P&#x662F;&#x4E0A;&#x6587;&#x4E2D;&#x83B7;&#x53D6;&#x7684;&#x6982;&#x7387;&#x56FE;&#xFF0C;T&#x662F;&#x4E0A;&#x6587;&#x4E2D;&#x83B7;&#x53D6;&#x7684;&#x9608;&#x503C;&#x56FE;&#xFF0C;k&#x662F;&#x589E;&#x76CA;&#x56E0;&#x5B50;&#xFF0C;&#x5728;&#x5B9E;&#x9A8C;&#x4E2D;&#xFF0C;&#x6839;&#x636E;&#x7ECF;&#x9A8C;&#x9009;&#x53D6;&#x4E3A;50&#x3002;&#x6807;&#x51C6;&#x4E8C;&#x503C;&#x5316;&#x548C;&#x53EF;&#x5FAE;&#x4E8C;&#x503C;&#x5316;&#x7684;&#x5BF9;&#x6BD4;&#x56FE;&#x5982; <strong>&#x4E0B;&#x56FE;3&#xFF08;a&#xFF09;</strong> &#x6240;&#x793A;&#x3002;</p>
+<p><img src="https://gitee.com/xuyouqian/drawing-bed/raw/master/img/20220221112843.png" alt=""></p>
+<p>&#x5BF9;&#x8F93;&#x5165; xx<em>x</em> &#x6C42;&#x504F;&#x5BFC;&#x5219;&#x4F1A;&#x5F97;&#x5230;&#xFF1A;</p>
+<p><img src="https://gitee.com/xuyouqian/drawing-bed/raw/master/img/20220221112911.png" alt=""></p>
+<p>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;&#x589E;&#x5F3A;&#x56E0;&#x5B50;&#x4F1A;&#x653E;&#x5927;&#x9519;&#x8BEF;&#x9884;&#x6D4B;&#x7684;&#x68AF;&#x5EA6;&#xFF0C;&#x4ECE;&#x800C;&#x4F18;&#x5316;&#x6A21;&#x578B;&#x5F97;&#x5230;&#x66F4;&#x597D;&#x7684;&#x7ED3;&#x679C;&#x3002;<strong>&#x56FE;3&#xFF08;b&#xFF09;</strong> &#x4E2D;&#xFF0C;x<0x<0*x*<0 的部分为正样本预测为负样本的情况，可以看到，增益因子k将梯度进行了放大；而="" **图3（c）**="" 中x="">0x&gt;0<em>x</em>&gt;0 &#x7684;&#x90E8;&#x5206;&#x4E3A;&#x8D1F;&#x6837;&#x672C;&#x9884;&#x6D4B;&#x4E3A;&#x6B63;&#x6837;&#x672C;&#x65F6;&#xFF0C;&#x68AF;&#x5EA6;&#x540C;&#x6837;&#x4E5F;&#x88AB;&#x653E;&#x5927;&#x4E86;&#x3002;</0x<0*x*<0></p>
+<p><img src="https://ai-studio-static-online.cdn.bcebos.com/29255d870bd74403af37c8f88cb10ebca0c3117282614774a3d607efc8be8c84" alt="img"></p>
+<p>&#x56FE;3&#xFF1A;DB&#x7B97;&#x6CD5;&#x793A;&#x610F;&#x56FE;</p>
+<p>DB&#x7B97;&#x6CD5;&#x6574;&#x4F53;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="https://ai-studio-static-online.cdn.bcebos.com/6e1f293e9a1f4c90b6c26919f16b95a4a85dcf7be73f4cc99c9dc5477bb956e6" alt="img"></p>
+<p>&#x56FE;2 DB&#x6A21;&#x578B;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;&#x793A;&#x610F;&#x56FE;</p>
+<p>&#x8F93;&#x5165;&#x7684;&#x56FE;&#x50CF;&#x7ECF;&#x8FC7;&#x7F51;&#x7EDC;Backbone&#x548C;FPN&#x63D0;&#x53D6;&#x7279;&#x5F81;&#xFF0C;&#x63D0;&#x53D6;&#x540E;&#x7684;&#x7279;&#x5F81;&#x7EA7;&#x8054;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x5F97;&#x5230;&#x539F;&#x56FE;&#x56DB;&#x5206;&#x4E4B;&#x4E00;&#x5927;&#x5C0F;&#x7684;&#x7279;&#x5F81;&#xFF0C;&#x7136;&#x540E;&#x5229;&#x7528;&#x5377;&#x79EF;&#x5C42;&#x5206;&#x522B;&#x5F97;&#x5230;&#x6587;&#x672C;&#x533A;&#x57DF;&#x9884;&#x6D4B;&#x6982;&#x7387;&#x56FE;&#x548C;&#x9608;&#x503C;&#x56FE;&#xFF0C;&#x8FDB;&#x800C;&#x901A;&#x8FC7;DB&#x7684;&#x540E;&#x5904;&#x7406;&#x5F97;&#x5230;&#x6587;&#x672C;&#x5305;&#x56F4;&#x66F2;&#x7EBF;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="readme.html" class="navigation navigation-prev " aria-label="Previous page: 文本检测算法的详细实现">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="02DB文本检测模型构建.html" class="navigation navigation-next " aria-label="Next page: DB文本检测算法模型构建">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"DB文本检测算法原理","level":"1.3.1.1.1","depth":4,"next":{"title":"DB文本检测算法模型构建","level":"1.3.1.1.2","depth":4,"path":"ppocr/db文本检测/文本检测算法的详细实现/02DB文本检测模型构建.md","ref":"ppocr/db文本检测/文本检测算法的详细实现/02DB文本检测模型构建.md","articles":[]},"previous":{"title":"文本检测算法的详细实现","level":"1.3.1.1","depth":3,"path":"ppocr/db文本检测/文本检测算法的详细实现/readme.md","ref":"ppocr/db文本检测/文本检测算法的详细实现/readme.md","articles":[{"title":"DB文本检测算法原理","level":"1.3.1.1.1","depth":4,"path":"ppocr/db文本检测/文本检测算法的详细实现/01DB文本检测算法原理.md","ref":"ppocr/db文本检测/文本检测算法的详细实现/01DB文本检测算法原理.md","articles":[]},{"title":"DB文本检测算法模型构建","level":"1.3.1.1.2","depth":4,"path":"ppocr/db文本检测/文本检测算法的详细实现/02DB文本检测模型构建.md","ref":"ppocr/db文本检测/文本检测算法的详细实现/02DB文本检测模型构建.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ppocr/db文本检测/文本检测算法的详细实现/01DB文本检测算法原理.md","mtime":"2022-02-26T05:38:03.069Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-26T06:28:45.468Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

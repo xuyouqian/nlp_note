@@ -1,0 +1,761 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>完整训练集生成 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="04模型构建.html" />
+    
+    
+    <link rel="prev" href="02_损失函数.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../pdpd/readme.html">
+            
+                <a href="../../../pdpd/readme.html">
+            
+                    
+                    paddlepaddle
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../../pdpd/数据集.html">
+            
+                <a href="../../../pdpd/数据集.html">
+            
+                    
+                    数据预处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../../pdpd/手写数字识别代码.html">
+            
+                <a href="../../../pdpd/手写数字识别代码.html">
+            
+                    
+                    实现手写数字识别代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../../pdpd/卷积神经网络.html">
+            
+                <a href="../../../pdpd/卷积神经网络.html">
+            
+                    
+                    卷积神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    图像分类
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../readme.html">
+            
+                <a href="../../readme.html">
+            
+                    
+                    ppocr
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../readme.html">
+            
+                <a href="../readme.html">
+            
+                    
+                    文本检测
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../文本检测算法的详细实现/readme.html">
+            
+                <a href="../文本检测算法的详细实现/readme.html">
+            
+                    
+                    文本检测算法的详细实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1" data-path="../文本检测算法的详细实现/01DB文本检测算法原理.html">
+            
+                <a href="../文本检测算法的详细实现/01DB文本检测算法原理.html">
+            
+                    
+                    DB文本检测算法原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2" data-path="../文本检测算法的详细实现/02DB文本检测模型构建.html">
+            
+                <a href="../文本检测算法的详细实现/02DB文本检测模型构建.html">
+            
+                    
+                    DB文本检测算法模型构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    训练DB文本检测模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.1" data-path="01图片标签生成.html">
+            
+                <a href="01图片标签生成.html">
+            
+                    
+                    生成图片标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2" data-path="02_损失函数.html">
+            
+                <a href="02_损失函数.html">
+            
+                    
+                    损失函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.1.2.3" data-path="03_完整的训练集生成.html">
+            
+                <a href="03_完整的训练集生成.html">
+            
+                    
+                    完整训练集生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.4" data-path="04模型构建.html">
+            
+                <a href="04模型构建.html">
+            
+                    
+                    模型构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.5" data-path="05_前向传播和反向传播.html">
+            
+                <a href="05_前向传播和反向传播.html">
+            
+                    
+                    前向传播和反向传播
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.6" data-path="06db模型后处理.html">
+            
+                <a href="06db模型后处理.html">
+            
+                    
+                    DB模型后处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.7" data-path="07模型评估.html">
+            
+                <a href="07模型评估.html">
+            
+                    
+                    模型评估
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >完整训练集生成</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5B8C;&#x6574;&#x7684;&#x6570;&#x636E;&#x96C6;&#x6784;&#x9020;&#x4EE3;&#x7801;">&#x5B8C;&#x6574;&#x7684;&#x6570;&#x636E;&#x96C6;&#x6784;&#x9020;&#x4EE3;&#x7801;</h1>
+<p>&#x6BD4;&#x4E4B;&#x524D;&#x7684;&#x6570;&#x636E;&#x9884;&#x5904;&#x7406;&#x52A0;&#x4E86;&#x6570;&#x636E;&#x589E;&#x5F3A;&#x548C;&#x5F52;&#x4E00;&#x5316;&#x7684;&#x64CD;&#x4F5C;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> random
+<span class="hljs-keyword">import</span> paddle
+<span class="hljs-keyword">import</span> traceback
+<span class="hljs-keyword">from</span> paddle.io <span class="hljs-keyword">import</span> Dataset,DataLoader
+<span class="hljs-keyword">from</span> paddle.io <span class="hljs-keyword">import</span> DistributedBatchSampler,BatchSampler
+
+<span class="hljs-keyword">from</span> ppocr.data.imaug.operators <span class="hljs-keyword">import</span> DecodeImage, NormalizeImage, ToCHWImage, KeepKeys
+<span class="hljs-keyword">from</span> ppocr.data.imaug.label_ops <span class="hljs-keyword">import</span> DetLabelEncode
+
+<span class="hljs-keyword">from</span> ppocr.data.imaug.iaa_augment <span class="hljs-keyword">import</span> IaaAugment
+<span class="hljs-keyword">from</span> ppocr.data.imaug.random_crop_data <span class="hljs-keyword">import</span> EastRandomCropData, RandomCropImgMask
+
+<span class="hljs-keyword">from</span> ppocr.data.imaug.make_border_map <span class="hljs-keyword">import</span> MakeBorderMap
+<span class="hljs-keyword">from</span> ppocr.data.imaug.make_shrink_map <span class="hljs-keyword">import</span> MakeShrinkMap
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_operators</span><span class="hljs-params">(op_param_list, global_config=None)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    create operators based on the config
+
+    Args:
+        params(list): a dict list, used to create some operators
+    &quot;&quot;&quot;</span>
+    <span class="hljs-keyword">assert</span> isinstance(op_param_list, list), (<span class="hljs-string">&apos;operator config should be a list&apos;</span>)
+    ops = []
+    <span class="hljs-keyword">for</span> operator <span class="hljs-keyword">in</span> op_param_list:
+        <span class="hljs-keyword">assert</span> isinstance(operator,
+                          dict) <span class="hljs-keyword">and</span> len(operator) == <span class="hljs-number">1</span>, <span class="hljs-string">&quot;yaml format error&quot;</span>
+        op_name = list(operator)[<span class="hljs-number">0</span>]
+        param = {} <span class="hljs-keyword">if</span> operator[op_name] <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span> <span class="hljs-keyword">else</span> operator[op_name]
+        <span class="hljs-keyword">if</span> global_config <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">None</span>:
+            param.update(global_config)
+        op = eval(op_name)(**param)
+        ops.append(op)
+    <span class="hljs-keyword">return</span> ops
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">transform</span><span class="hljs-params">(data, ops=None)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot; transform &quot;&quot;&quot;</span>
+    <span class="hljs-keyword">if</span> ops <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span>:
+        ops = []
+    <span class="hljs-keyword">for</span> op <span class="hljs-keyword">in</span> ops:
+        data = op(data)
+        <span class="hljs-keyword">if</span> data <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span>
+    <span class="hljs-keyword">return</span> data
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SimpleDataSet</span><span class="hljs-params">(Dataset)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, config, mode, logger, seed=None)</span>:</span>
+        super(SimpleDataSet, self).__init__()
+        self.logger = logger
+        self.mode = mode.lower()
+
+        global_config = config[<span class="hljs-string">&apos;Global&apos;</span>]
+        dataset_config = config[mode][<span class="hljs-string">&apos;dataset&apos;</span>]
+        loader_config = config[mode][<span class="hljs-string">&apos;loader&apos;</span>]
+
+        self.delimiter = dataset_config.get(<span class="hljs-string">&apos;delimiter&apos;</span>, <span class="hljs-string">&apos;\t&apos;</span>)
+        label_file_list = dataset_config.pop(<span class="hljs-string">&apos;label_file_list&apos;</span>)
+        data_source_num = len(label_file_list)
+        ratio_list = dataset_config.get(<span class="hljs-string">&quot;ratio_list&quot;</span>, [<span class="hljs-number">1.0</span>])
+        <span class="hljs-keyword">if</span> isinstance(ratio_list, (float, int)):
+            ratio_list = [float(ratio_list)] * int(data_source_num)
+
+        <span class="hljs-keyword">assert</span> len(
+            ratio_list
+        ) == data_source_num, <span class="hljs-string">&quot;The length of ratio_list should be the same as the file_list.&quot;</span>
+        self.data_dir = dataset_config[<span class="hljs-string">&apos;data_dir&apos;</span>]
+        self.do_shuffle = loader_config[<span class="hljs-string">&apos;shuffle&apos;</span>]
+
+        self.seed = seed
+        logger.info(<span class="hljs-string">&quot;Initialize indexs of datasets:%s&quot;</span> % label_file_list)
+        self.data_lines = self.get_image_info_list(label_file_list, ratio_list)
+        self.data_idx_order_list = list(range(len(self.data_lines)))
+        <span class="hljs-keyword">if</span> self.mode == <span class="hljs-string">&quot;train&quot;</span> <span class="hljs-keyword">and</span> self.do_shuffle:
+            self.shuffle_data_random()
+        self.ops = create_operators(dataset_config[<span class="hljs-string">&apos;transforms&apos;</span>], global_config)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_image_info_list</span><span class="hljs-params">(self, file_list, ratio_list)</span>:</span>
+        <span class="hljs-keyword">if</span> isinstance(file_list, str):
+            file_list = [file_list]
+        data_lines = []
+        <span class="hljs-keyword">for</span> idx, file <span class="hljs-keyword">in</span> enumerate(file_list):
+            <span class="hljs-keyword">with</span> open(file, <span class="hljs-string">&quot;rb&quot;</span>) <span class="hljs-keyword">as</span> f:
+                lines = f.readlines()
+                <span class="hljs-keyword">if</span> self.mode == <span class="hljs-string">&quot;train&quot;</span> <span class="hljs-keyword">or</span> ratio_list[idx] &lt; <span class="hljs-number">1.0</span>:
+                    random.seed(self.seed)
+                    lines = random.sample(lines,
+                                          round(len(lines) * ratio_list[idx]))
+                data_lines.extend(lines)
+        <span class="hljs-keyword">return</span> data_lines
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">shuffle_data_random</span><span class="hljs-params">(self)</span>:</span>
+        random.seed(self.seed)
+        random.shuffle(self.data_lines)
+        <span class="hljs-keyword">return</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_ext_data</span><span class="hljs-params">(self)</span>:</span>
+        ext_data_num = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> op <span class="hljs-keyword">in</span> self.ops:
+            <span class="hljs-keyword">if</span> hasattr(op, <span class="hljs-string">&apos;ext_data_num&apos;</span>):
+                ext_data_num = getattr(op, <span class="hljs-string">&apos;ext_data_num&apos;</span>)
+                <span class="hljs-keyword">break</span>
+        load_data_ops = self.ops[:<span class="hljs-number">2</span>]
+        ext_data = []
+
+        <span class="hljs-keyword">while</span> len(ext_data) &lt; ext_data_num:
+            file_idx = self.data_idx_order_list[np.random.randint(self.__len__(
+            ))]
+            data_line = self.data_lines[file_idx]
+            data_line = data_line.decode(<span class="hljs-string">&apos;utf-8&apos;</span>)
+            substr = data_line.strip(<span class="hljs-string">&quot;\n&quot;</span>).split(self.delimiter)
+            file_name = substr[<span class="hljs-number">0</span>]
+            label = substr[<span class="hljs-number">1</span>]
+            img_path = os.path.join(self.data_dir, file_name)
+            data = {<span class="hljs-string">&apos;img_path&apos;</span>: img_path, <span class="hljs-string">&apos;label&apos;</span>: label}
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(img_path):
+                <span class="hljs-keyword">continue</span>
+            <span class="hljs-keyword">with</span> open(data[<span class="hljs-string">&apos;img_path&apos;</span>], <span class="hljs-string">&apos;rb&apos;</span>) <span class="hljs-keyword">as</span> f:
+                img = f.read()
+                data[<span class="hljs-string">&apos;image&apos;</span>] = img
+            data = transform(data, load_data_ops)
+
+            <span class="hljs-keyword">if</span> data <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span> <span class="hljs-keyword">or</span> data[<span class="hljs-string">&apos;polys&apos;</span>].shape[<span class="hljs-number">1</span>] != <span class="hljs-number">4</span>:
+                <span class="hljs-keyword">continue</span>
+            ext_data.append(data)
+        <span class="hljs-keyword">return</span> ext_data
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__getitem__</span><span class="hljs-params">(self, idx)</span>:</span>
+        file_idx = self.data_idx_order_list[idx]
+        data_line = self.data_lines[file_idx]
+        <span class="hljs-keyword">try</span>:
+            data_line = data_line.decode(<span class="hljs-string">&apos;utf-8&apos;</span>)
+            substr = data_line.strip(<span class="hljs-string">&quot;\n&quot;</span>).split(self.delimiter)
+            file_name = substr[<span class="hljs-number">0</span>]
+            label = substr[<span class="hljs-number">1</span>]
+            img_path = os.path.join(self.data_dir, file_name)
+            data = {<span class="hljs-string">&apos;img_path&apos;</span>: img_path, <span class="hljs-string">&apos;label&apos;</span>: label}
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(img_path):
+                <span class="hljs-keyword">raise</span> Exception(<span class="hljs-string">&quot;{} does not exist!&quot;</span>.format(img_path))
+            <span class="hljs-keyword">with</span> open(data[<span class="hljs-string">&apos;img_path&apos;</span>], <span class="hljs-string">&apos;rb&apos;</span>) <span class="hljs-keyword">as</span> f:
+                img = f.read()
+                data[<span class="hljs-string">&apos;image&apos;</span>] = img
+            data[<span class="hljs-string">&apos;ext_data&apos;</span>] = self.get_ext_data()
+            outs = transform(data, self.ops)
+        <span class="hljs-keyword">except</span>:
+            self.logger.error(
+                <span class="hljs-string">&quot;When parsing line {}, error happened with msg: {}&quot;</span>.format(
+                    data_line, traceback.format_exc()))
+            outs = <span class="hljs-keyword">None</span>
+        <span class="hljs-keyword">if</span> outs <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span>:
+            <span class="hljs-comment"># during evaluation, we should fix the idx to get same results for many times of evaluation.</span>
+            rnd_idx = np.random.randint(self.__len__(
+            )) <span class="hljs-keyword">if</span> self.mode == <span class="hljs-string">&quot;train&quot;</span> <span class="hljs-keyword">else</span> (idx + <span class="hljs-number">1</span>) % self.__len__()
+            <span class="hljs-keyword">return</span> self.__getitem__(rnd_idx)
+        <span class="hljs-keyword">return</span> outs
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__len__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> len(self.data_idx_order_list)
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    config = {
+        <span class="hljs-string">&apos;Global&apos;</span>: {<span class="hljs-string">&apos;debug&apos;</span>: <span class="hljs-keyword">False</span>, <span class="hljs-string">&apos;use_gpu&apos;</span>: <span class="hljs-keyword">False</span>, <span class="hljs-string">&apos;epoch_num&apos;</span>: <span class="hljs-number">1200</span>, <span class="hljs-string">&apos;log_smooth_window&apos;</span>: <span class="hljs-number">20</span>, <span class="hljs-string">&apos;print_batch_step&apos;</span>: <span class="hljs-number">10</span>,
+                   <span class="hljs-string">&apos;save_model_dir&apos;</span>: <span class="hljs-string">&apos;./output/db_mv3/&apos;</span>, <span class="hljs-string">&apos;save_epoch_step&apos;</span>: <span class="hljs-number">1200</span>, <span class="hljs-string">&apos;eval_batch_step&apos;</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">2000</span>],
+                   <span class="hljs-string">&apos;cal_metric_during_train&apos;</span>: <span class="hljs-keyword">False</span>,
+                   <span class="hljs-string">&apos;pretrained_model&apos;</span>: <span class="hljs-string">&apos;./pretrain_models/MobileNetV3_large_x0_5_pretrained&apos;</span>, <span class="hljs-string">&apos;checkpoints&apos;</span>: <span class="hljs-keyword">None</span>,
+                   <span class="hljs-string">&apos;save_inference_dir&apos;</span>: <span class="hljs-keyword">None</span>, <span class="hljs-string">&apos;use_visualdl&apos;</span>: <span class="hljs-keyword">False</span>, <span class="hljs-string">&apos;infer_img&apos;</span>: <span class="hljs-string">&apos;doc/imgs_en/img_10.jpg&apos;</span>,
+                   <span class="hljs-string">&apos;save_res_path&apos;</span>: <span class="hljs-string">&apos;./output/det_db/predicts_db.txt&apos;</span>, <span class="hljs-string">&apos;distributed&apos;</span>: <span class="hljs-keyword">False</span>},
+        <span class="hljs-string">&apos;Architecture&apos;</span>: {<span class="hljs-string">&apos;model_type&apos;</span>: <span class="hljs-string">&apos;det&apos;</span>, <span class="hljs-string">&apos;algorithm&apos;</span>: <span class="hljs-string">&apos;DB&apos;</span>, <span class="hljs-string">&apos;Transform&apos;</span>: <span class="hljs-keyword">None</span>,
+                         <span class="hljs-string">&apos;Backbone&apos;</span>: {<span class="hljs-string">&apos;name&apos;</span>: <span class="hljs-string">&apos;MobileNetV3&apos;</span>, <span class="hljs-string">&apos;scale&apos;</span>: <span class="hljs-number">0.5</span>, <span class="hljs-string">&apos;model_name&apos;</span>: <span class="hljs-string">&apos;large&apos;</span>},
+                         <span class="hljs-string">&apos;Neck&apos;</span>: {<span class="hljs-string">&apos;name&apos;</span>: <span class="hljs-string">&apos;DBFPN&apos;</span>, <span class="hljs-string">&apos;out_channels&apos;</span>: <span class="hljs-number">256</span>}, <span class="hljs-string">&apos;Head&apos;</span>: {<span class="hljs-string">&apos;name&apos;</span>: <span class="hljs-string">&apos;DBHead&apos;</span>, <span class="hljs-string">&apos;k&apos;</span>: <span class="hljs-number">50</span>}},
+        <span class="hljs-string">&apos;Loss&apos;</span>: {<span class="hljs-string">&apos;name&apos;</span>: <span class="hljs-string">&apos;DBLoss&apos;</span>, <span class="hljs-string">&apos;balance_loss&apos;</span>: <span class="hljs-keyword">True</span>, <span class="hljs-string">&apos;main_loss_type&apos;</span>: <span class="hljs-string">&apos;DiceLoss&apos;</span>, <span class="hljs-string">&apos;alpha&apos;</span>: <span class="hljs-number">5</span>, <span class="hljs-string">&apos;beta&apos;</span>: <span class="hljs-number">10</span>,
+                 <span class="hljs-string">&apos;ohem_ratio&apos;</span>: <span class="hljs-number">3</span>},
+        <span class="hljs-string">&apos;Optimizer&apos;</span>: {<span class="hljs-string">&apos;name&apos;</span>: <span class="hljs-string">&apos;Adam&apos;</span>, <span class="hljs-string">&apos;beta1&apos;</span>: <span class="hljs-number">0.9</span>, <span class="hljs-string">&apos;beta2&apos;</span>: <span class="hljs-number">0.999</span>, <span class="hljs-string">&apos;lr&apos;</span>: {<span class="hljs-string">&apos;learning_rate&apos;</span>: <span class="hljs-number">0.001</span>},
+                      <span class="hljs-string">&apos;regularizer&apos;</span>: {<span class="hljs-string">&apos;name&apos;</span>: <span class="hljs-string">&apos;L2&apos;</span>, <span class="hljs-string">&apos;factor&apos;</span>: <span class="hljs-number">0</span>}},
+        <span class="hljs-string">&apos;PostProcess&apos;</span>: {<span class="hljs-string">&apos;name&apos;</span>: <span class="hljs-string">&apos;DBPostProcess&apos;</span>, <span class="hljs-string">&apos;thresh&apos;</span>: <span class="hljs-number">0.3</span>, <span class="hljs-string">&apos;box_thresh&apos;</span>: <span class="hljs-number">0.6</span>, <span class="hljs-string">&apos;max_candidates&apos;</span>: <span class="hljs-number">1000</span>,
+                        <span class="hljs-string">&apos;unclip_ratio&apos;</span>: <span class="hljs-number">1.5</span>}, <span class="hljs-string">&apos;Metric&apos;</span>: {<span class="hljs-string">&apos;name&apos;</span>: <span class="hljs-string">&apos;DetMetric&apos;</span>, <span class="hljs-string">&apos;main_indicator&apos;</span>: <span class="hljs-string">&apos;hmean&apos;</span>}, <span class="hljs-string">&apos;Train&apos;</span>: {
+            <span class="hljs-string">&apos;dataset&apos;</span>: {<span class="hljs-string">&apos;name&apos;</span>: <span class="hljs-string">&apos;SimpleDataSet&apos;</span>, <span class="hljs-string">&apos;data_dir&apos;</span>: <span class="hljs-string">&apos;data/icdar2015/text_localization/&apos;</span>,
+                        <span class="hljs-string">&apos;label_file_list&apos;</span>: [<span class="hljs-string">&apos;data/icdar2015/text_localization/train_icdar2015_label.txt&apos;</span>],
+                        <span class="hljs-string">&apos;ratio_list&apos;</span>: [<span class="hljs-number">1.0</span>],
+                        <span class="hljs-string">&apos;transforms&apos;</span>: [{<span class="hljs-string">&apos;DecodeImage&apos;</span>: {<span class="hljs-string">&apos;img_mode&apos;</span>: <span class="hljs-string">&apos;BGR&apos;</span>, <span class="hljs-string">&apos;channel_first&apos;</span>: <span class="hljs-keyword">False</span>}},
+                                       {<span class="hljs-string">&apos;DetLabelEncode&apos;</span>: <span class="hljs-keyword">None</span>}, {<span class="hljs-string">&apos;IaaAugment&apos;</span>: {
+                                <span class="hljs-string">&apos;augmenter_args&apos;</span>: [{<span class="hljs-string">&apos;type&apos;</span>: <span class="hljs-string">&apos;Fliplr&apos;</span>, <span class="hljs-string">&apos;args&apos;</span>: {<span class="hljs-string">&apos;p&apos;</span>: <span class="hljs-number">0.5</span>}},
+                                                   {<span class="hljs-string">&apos;type&apos;</span>: <span class="hljs-string">&apos;Affine&apos;</span>, <span class="hljs-string">&apos;args&apos;</span>: {<span class="hljs-string">&apos;rotate&apos;</span>: [<span class="hljs-number">-10</span>, <span class="hljs-number">10</span>]}},
+                                                   {<span class="hljs-string">&apos;type&apos;</span>: <span class="hljs-string">&apos;Resize&apos;</span>, <span class="hljs-string">&apos;args&apos;</span>: {<span class="hljs-string">&apos;size&apos;</span>: [<span class="hljs-number">0.5</span>, <span class="hljs-number">3</span>]}}]}}, {
+                                           <span class="hljs-string">&apos;EastRandomCropData&apos;</span>: {<span class="hljs-string">&apos;size&apos;</span>: [<span class="hljs-number">640</span>, <span class="hljs-number">640</span>], <span class="hljs-string">&apos;max_tries&apos;</span>: <span class="hljs-number">50</span>,
+                                                                  <span class="hljs-string">&apos;keep_ratio&apos;</span>: <span class="hljs-keyword">True</span>}},
+                                       {<span class="hljs-string">&apos;MakeBorderMap&apos;</span>: {<span class="hljs-string">&apos;shrink_ratio&apos;</span>: <span class="hljs-number">0.4</span>, <span class="hljs-string">&apos;thresh_min&apos;</span>: <span class="hljs-number">0.3</span>, <span class="hljs-string">&apos;thresh_max&apos;</span>: <span class="hljs-number">0.7</span>}},
+                                       {<span class="hljs-string">&apos;MakeShrinkMap&apos;</span>: {<span class="hljs-string">&apos;shrink_ratio&apos;</span>: <span class="hljs-number">0.4</span>, <span class="hljs-string">&apos;min_text_size&apos;</span>: <span class="hljs-number">8</span>}}, {
+                                           <span class="hljs-string">&apos;NormalizeImage&apos;</span>: {<span class="hljs-string">&apos;scale&apos;</span>: <span class="hljs-string">&apos;1./255.&apos;</span>, <span class="hljs-string">&apos;mean&apos;</span>: [<span class="hljs-number">0.485</span>, <span class="hljs-number">0.456</span>, <span class="hljs-number">0.406</span>],
+                                                              <span class="hljs-string">&apos;std&apos;</span>: [<span class="hljs-number">0.229</span>, <span class="hljs-number">0.224</span>, <span class="hljs-number">0.225</span>], <span class="hljs-string">&apos;order&apos;</span>: <span class="hljs-string">&apos;hwc&apos;</span>}},
+                                       {<span class="hljs-string">&apos;ToCHWImage&apos;</span>: <span class="hljs-keyword">None</span>}, {<span class="hljs-string">&apos;KeepKeys&apos;</span>: {
+                                <span class="hljs-string">&apos;keep_keys&apos;</span>: [<span class="hljs-string">&apos;image&apos;</span>, <span class="hljs-string">&apos;threshold_map&apos;</span>, <span class="hljs-string">&apos;threshold_mask&apos;</span>, <span class="hljs-string">&apos;shrink_map&apos;</span>,
+                                              <span class="hljs-string">&apos;shrink_mask&apos;</span>]}}]},
+            <span class="hljs-string">&apos;loader&apos;</span>: {<span class="hljs-string">&apos;shuffle&apos;</span>: <span class="hljs-keyword">True</span>, <span class="hljs-string">&apos;drop_last&apos;</span>: <span class="hljs-keyword">False</span>, <span class="hljs-string">&apos;batch_size_per_card&apos;</span>: <span class="hljs-number">16</span>, <span class="hljs-string">&apos;num_workers&apos;</span>: <span class="hljs-number">8</span>,
+                       <span class="hljs-string">&apos;use_shared_memory&apos;</span>: <span class="hljs-keyword">False</span>}}, <span class="hljs-string">&apos;Eval&apos;</span>: {
+            <span class="hljs-string">&apos;dataset&apos;</span>: {<span class="hljs-string">&apos;name&apos;</span>: <span class="hljs-string">&apos;SimpleDataSet&apos;</span>, <span class="hljs-string">&apos;data_dir&apos;</span>: <span class="hljs-string">&apos;data/icdar2015/text_localization/&apos;</span>,
+                        <span class="hljs-string">&apos;label_file_list&apos;</span>: [<span class="hljs-string">&apos;data/icdar2015/text_localization/test_icdar2015_label.txt&apos;</span>],
+                        <span class="hljs-string">&apos;transforms&apos;</span>: [{<span class="hljs-string">&apos;DecodeImage&apos;</span>: {<span class="hljs-string">&apos;img_mode&apos;</span>: <span class="hljs-string">&apos;BGR&apos;</span>, <span class="hljs-string">&apos;channel_first&apos;</span>: <span class="hljs-keyword">False</span>}},
+                                       {<span class="hljs-string">&apos;DetLabelEncode&apos;</span>: <span class="hljs-keyword">None</span>}, {<span class="hljs-string">&apos;DetResizeForTest&apos;</span>: {<span class="hljs-string">&apos;image_shape&apos;</span>: [<span class="hljs-number">736</span>, <span class="hljs-number">1280</span>]}}, {
+                                           <span class="hljs-string">&apos;NormalizeImage&apos;</span>: {<span class="hljs-string">&apos;scale&apos;</span>: <span class="hljs-string">&apos;1./255.&apos;</span>, <span class="hljs-string">&apos;mean&apos;</span>: [<span class="hljs-number">0.485</span>, <span class="hljs-number">0.456</span>, <span class="hljs-number">0.406</span>],
+                                                              <span class="hljs-string">&apos;std&apos;</span>: [<span class="hljs-number">0.229</span>, <span class="hljs-number">0.224</span>, <span class="hljs-number">0.225</span>], <span class="hljs-string">&apos;order&apos;</span>: <span class="hljs-string">&apos;hwc&apos;</span>}},
+                                       {<span class="hljs-string">&apos;ToCHWImage&apos;</span>: <span class="hljs-keyword">None</span>},
+                                       {<span class="hljs-string">&apos;KeepKeys&apos;</span>: {<span class="hljs-string">&apos;keep_keys&apos;</span>: [<span class="hljs-string">&apos;image&apos;</span>, <span class="hljs-string">&apos;shape&apos;</span>, <span class="hljs-string">&apos;polys&apos;</span>, <span class="hljs-string">&apos;ignore_tags&apos;</span>]}}]},
+            <span class="hljs-string">&apos;loader&apos;</span>: {<span class="hljs-string">&apos;shuffle&apos;</span>: <span class="hljs-keyword">False</span>, <span class="hljs-string">&apos;drop_last&apos;</span>: <span class="hljs-keyword">False</span>, <span class="hljs-string">&apos;batch_size_per_card&apos;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&apos;num_workers&apos;</span>: <span class="hljs-number">8</span>,
+                       <span class="hljs-string">&apos;use_shared_memory&apos;</span>: <span class="hljs-keyword">False</span>}}, <span class="hljs-string">&apos;profiler_options&apos;</span>: <span class="hljs-keyword">None</span>}
+    <span class="hljs-keyword">import</span> logging
+
+    device = paddle.set_device(<span class="hljs-string">&apos;cpu&apos;</span>)
+    logging.basicConfig(level=logging.INFO, format=<span class="hljs-string">&apos;%(asctime)s - %(name)s - %(levelname)s - %(message)s&apos;</span>)
+    logger = logging.getLogger(__name__)
+    mode = <span class="hljs-string">&apos;Train&apos;</span>
+
+    dataset = SimpleDataSet(config, mode, logger)
+
+    loader_config = config[mode][<span class="hljs-string">&apos;loader&apos;</span>]
+    batch_size = loader_config[<span class="hljs-string">&apos;batch_size_per_card&apos;</span>]
+    drop_last = loader_config[<span class="hljs-string">&apos;drop_last&apos;</span>]
+    shuffle = loader_config[<span class="hljs-string">&apos;shuffle&apos;</span>]
+    num_workers = loader_config[<span class="hljs-string">&apos;num_workers&apos;</span>]
+    <span class="hljs-keyword">if</span> <span class="hljs-string">&apos;use_shared_memory&apos;</span> <span class="hljs-keyword">in</span> loader_config.keys():
+        use_shared_memory = loader_config[<span class="hljs-string">&apos;use_shared_memory&apos;</span>]
+    <span class="hljs-keyword">else</span>:
+        use_shared_memory = <span class="hljs-keyword">True</span>
+
+    <span class="hljs-keyword">if</span> mode == <span class="hljs-string">&quot;Train&quot;</span>:
+        <span class="hljs-comment"># Distribute data to multiple cards</span>
+        batch_sampler = DistributedBatchSampler(
+            dataset=dataset,
+            batch_size=batch_size,
+            shuffle=shuffle,
+            drop_last=drop_last)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-comment"># Distribute data to single card</span>
+        batch_sampler = BatchSampler(
+            dataset=dataset,
+            batch_size=batch_size,
+            shuffle=shuffle,
+            drop_last=drop_last)
+    data_loader = DataLoader(
+        dataset=dataset,
+        batch_sampler=batch_sampler,
+        places=device,
+        num_workers=num_workers,
+        return_list=<span class="hljs-keyword">True</span>,
+        use_shared_memory=use_shared_memory)
+
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> data_loader():
+        i
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="02_损失函数.html" class="navigation navigation-prev " aria-label="Previous page: 损失函数">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="04模型构建.html" class="navigation navigation-next " aria-label="Next page: 模型构建">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"完整训练集生成","level":"1.3.1.2.3","depth":4,"next":{"title":"模型构建","level":"1.3.1.2.4","depth":4,"path":"ppocr/db文本检测/训练DB文字检测模型/04模型构建.md","ref":"ppocr/db文本检测/训练DB文字检测模型/04模型构建.md","articles":[]},"previous":{"title":"损失函数","level":"1.3.1.2.2","depth":4,"path":"ppocr/db文本检测/训练DB文字检测模型/02_损失函数.md","ref":"ppocr/db文本检测/训练DB文字检测模型/02_损失函数.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ppocr/db文本检测/训练DB文字检测模型/03_完整的训练集生成.md","mtime":"2022-02-21T07:32:21.157Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-26T06:28:45.468Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
