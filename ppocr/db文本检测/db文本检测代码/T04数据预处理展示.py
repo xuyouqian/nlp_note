@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
     # 0.4表示文本框内缩比例  0.3 跟0.7 是控制文本框粗细的两个参数  获取阈值图
     make_border_map = MakeBorderMap(shrink_ratio=0.4, thresh_min=0.3, thresh_max=0.7)
-    data = make_border_map(data)
+    data = make_border_map(data)   # data 多出threhold_map 和threshold_mask 两个键
 
     # 0.4还是表示缩放比例 把原来的文本区域缩小到原来的40%
     make_shrink_map = MakeShrinkMap(shrink_ratio=0.4, min_text_size=8)
@@ -59,14 +59,11 @@ if __name__ == '__main__':
     to_chw_image = ToCHWImage()
     data = to_chw_image(data)
 
-    threshold_map = data['threshold_map']
+    threshold_map = data['threshold_mask']
 
     plt.figure(figsize=(10, 10))
     plt.imshow(threshold_map)
     plt.show()
-    data
     keep_keys = KeepKeys(keep_keys=['image', 'threshold_map', 'threshold_mask', 'shrink_map',
                         'shrink_mask'])
     data = keep_keys(data)
-    data
-
